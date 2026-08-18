@@ -6,6 +6,7 @@
     --muted: #a5a5a5;
     --accent: #b6ff00;
     --border: rgba(255,255,255,0.1);
+    --border-strong: rgba(255,255,255,0.18);
 }
 
 * {
@@ -23,11 +24,16 @@ body {
     background: var(--background);
     color: var(--text);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+button {
+    font-family: inherit;
 }
 
 section {
@@ -79,6 +85,7 @@ section {
     border-bottom: 1px solid var(--border);
 
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
 
     z-index: 1000;
 }
@@ -121,7 +128,7 @@ section {
     top: calc(100% + 20px);
     left: -20px;
 
-    width: 230px;
+    width: 240px;
     padding: 10px;
 
     background: #111;
@@ -133,7 +140,7 @@ section {
     transform: translateY(8px);
     transition: 0.25s;
 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 .nav-dropdown:hover .dropdown-menu {
@@ -173,6 +180,7 @@ section {
 
 .nav-button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(182,255,0,0.15);
 }
 
 .mobile-menu-button {
@@ -227,6 +235,10 @@ section {
 
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+.mobile-menu > a:hover {
+    color: var(--accent);
 }
 
 .mobile-menu .mobile-book-button {
@@ -310,6 +322,40 @@ section {
         );
 }
 
+.hero::before,
+.academy-hero::before,
+.program-page-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+}
+
 .hero-content {
     max-width: 900px;
     position: relative;
@@ -318,13 +364,9 @@ section {
 
 .hero h1 {
     font-size: clamp(4rem,9vw,8rem);
-
     line-height: 0.88;
-
     letter-spacing: -0.06em;
-
     font-weight: 900;
-
     margin-bottom: 35px;
 }
 
@@ -334,11 +376,8 @@ section {
 
 .hero-text {
     max-width: 620px;
-
     color: var(--muted);
-
     font-size: 1.05rem;
-
     margin-bottom: 35px;
 }
 
@@ -387,11 +426,8 @@ section {
 
 .intro-content h2 {
     font-size: clamp(3rem,6vw,6rem);
-
     line-height: 0.9;
-
     letter-spacing: -0.05em;
-
     margin-bottom: 30px;
 }
 
@@ -435,6 +471,7 @@ section {
 .development-card:hover {
     transform: translateY(-6px);
     border-color: rgba(182,255,0,0.4);
+    background: var(--surface-light);
 }
 
 .card-number {
@@ -508,11 +545,33 @@ section {
     border: 1px solid var(--border);
 
     transition: 0.3s;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.program-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--accent);
+
+    transition: 0.35s;
+}
+
+.program-card:hover::before {
+    width: 100%;
 }
 
 .program-card:hover {
     transform: translateY(-6px);
-
     border-color: rgba(182,255,0,0.4);
 }
 
@@ -653,6 +712,13 @@ section {
     background: var(--surface);
 
     border: 1px solid var(--border);
+
+    transition: 0.3s;
+}
+
+.testimonial:hover {
+    transform: translateY(-5px);
+    border-color: rgba(182,255,0,0.3);
 }
 
 .testimonial p {
@@ -792,33 +858,6 @@ section {
             rgba(182,255,0,0.08),
             transparent 32%
         );
-}
-
-.academy-hero::before,
-.program-page-hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,0.025) 1px,
-            transparent 1px
-        );
-
-    background-size: 70px 70px;
-
-    mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent
-    );
 }
 
 .academy-hero-content {
@@ -1112,7 +1151,7 @@ section {
 
 
 /* =========================================
-   PROGRAMS PAGE HERO
+   PROGRAM PAGE HERO
 ========================================= */
 
 .program-page-hero {
@@ -1242,7 +1281,7 @@ section {
 
     gap: 60px;
 
-    padding: 70px 0;
+    padding: 80px 0;
 
     border-top: 1px solid var(--border);
 
@@ -1276,7 +1315,7 @@ section {
 }
 
 .premium-program-content {
-    max-width: 750px;
+    max-width: 800px;
 }
 
 .premium-program-content h2 {
@@ -1324,52 +1363,4 @@ section {
 
     padding-left: 20px;
 
-    position: relative;
-}
-
-.premium-program-content li::before {
-    content: "";
-
-    width: 6px;
-    height: 6px;
-
-    background: var(--accent);
-
-    position: absolute;
-
-    left: 0;
-    top: 9px;
-}
-
-
-/* =========================================
-   PROGRAM WHY
-========================================= */
-
-.program-why {
-    background: #0d0d0d;
-}
-
-.program-why-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 100px;
-}
-
-.program-why-grid h2 {
-    font-size: clamp(3rem,6vw,6rem);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.05em;
-}
-
-.program-why-grid h2 span {
-    display: block;
-
-    color: var(--accent);
-}
-
-.program-
+    
