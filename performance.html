@@ -1,969 +1,1371 @@
-<!DOCTYPE html>
-<html lang="en">
+:root {
+    --background: #080808;
+    --surface: #111111;
+    --surface-light: #181818;
+    --text: #ffffff;
+    --muted: #a5a5a5;
+    --accent: #b6ff00;
+    --border: rgba(255,255,255,0.10);
+    --border-strong: rgba(255,255,255,0.18);
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+section {
+    padding: 110px 7%;
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 22px;
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 45px;
+}
+
+.section-label span {
+    color: var(--accent);
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(8,8,8,0.88);
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+}
 
-<head>
+.logo span {
+    color: var(--accent);
+}
 
-    <meta charset="UTF-8">
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+.desktop-nav > a,
+.nav-dropdown > a {
+    color: #d7d7d7;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: 0.25s;
+}
 
-    <title>Performance | EliteEdge Football Academy</title>
+.desktop-nav > a:hover,
+.nav-dropdown > a:hover {
+    color: var(--accent);
+}
 
-    <meta
-        name="description"
-        content="EliteEdge Performance helps players understand their game through match analysis, tactical review and structured development feedback."
-    >
+.nav-dropdown {
+    position: relative;
+}
 
-    <link rel="stylesheet" href="style.css">
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: -20px;
 
-</head>
+    width: 240px;
+    padding: 10px;
 
+    background: #111;
+    border: 1px solid var(--border);
 
-<body>
+    opacity: 0;
+    visibility: hidden;
 
+    transform: translateY(8px);
+    transition: 0.25s;
 
-<!-- =========================================
-     NAVIGATION
-========================================= -->
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
 
-<header class="navbar">
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
 
-    <a href="index.html" class="logo">
-        ELITE<span>EDGE</span>
-    </a>
+.dropdown-menu a {
+    display: block;
+    padding: 12px;
 
+    color: #bdbdbd;
+    font-size: 0.72rem;
 
-    <nav class="desktop-nav">
+    transition: 0.2s;
+}
 
-        <div class="nav-dropdown">
+.dropdown-menu a:hover {
+    background: #181818;
+    color: var(--accent);
+}
 
-            <a href="programs.html">
-                Programs
-            </a>
+.nav-button {
+    padding: 12px 20px;
 
-            <div class="dropdown-menu">
+    background: var(--accent);
+    color: #000;
 
-                <a href="programs.html#one-to-one">
-                    1-to-1 Development
-                </a>
+    font-size: 0.75rem;
+    font-weight: 800;
 
-                <a href="programs.html#group-training">
-                    Group Training
-                </a>
+    text-transform: uppercase;
 
-                <a href="programs.html#camps">
-                    Football Camps
-                </a>
+    transition: 0.25s;
+}
 
-                <a href="performance.html">
-                    Performance Analysis
-                </a>
+.nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(182,255,0,0.15);
+}
 
-            </div>
+.mobile-menu-button {
+    display: none;
 
-        </div>
+    width: 42px;
+    height: 42px;
 
+    background: transparent;
+    border: 1px solid var(--border);
 
-        <a href="academy.html">
-            Academy
-        </a>
+    color: white;
+    font-size: 1.2rem;
 
+    cursor: pointer;
+}
 
-        <a href="performance.html">
-            Performance
-        </a>
+.mobile-menu {
+    position: fixed;
 
+    top: 80px;
+    left: 0;
 
-        <a href="index.html#contact">
-            Contact
-        </a>
+    width: 100%;
 
-    </nav>
+    padding: 25px 7% 35px;
 
+    background: rgba(8,8,8,0.98);
+    border-bottom: 1px solid var(--border);
 
-    <a
-        href="booking.html"
-        class="nav-button"
-    >
-        Book a Session
-    </a>
+    display: flex;
+    flex-direction: column;
 
+    gap: 5px;
 
-    <button
-        class="mobile-menu-button"
-        id="mobile-menu-button"
-        aria-label="Open navigation menu"
-    >
-        ☰
-    </button>
+    transform: translateY(-120%);
+    transition: transform 0.3s ease;
 
-</header>
+    z-index: 999;
+}
 
+.mobile-menu.active {
+    transform: translateY(0);
+}
 
+.mobile-menu > a {
+    padding: 15px 0;
 
-<!-- =========================================
-     MOBILE NAVIGATION
-========================================= -->
+    border-bottom: 1px solid var(--border);
 
-<div
-    class="mobile-menu"
-    id="mobile-menu"
->
+    color: #ddd;
 
-    <a href="index.html">
-        Home
-    </a>
+    font-size: 0.85rem;
+    font-weight: 600;
+}
 
-    <a href="programs.html">
-        Programs
-    </a>
+.mobile-menu > a:hover {
+    color: var(--accent);
+}
 
-    <a href="academy.html">
-        Academy
-    </a>
+.mobile-menu .mobile-book-button {
+    margin-top: 15px;
 
-    <a href="performance.html">
-        Performance
-    </a>
+    padding: 15px;
 
-    <a href="index.html#contact">
-        Contact
-    </a>
+    text-align: center;
 
-    <a
-        href="booking.html"
-        class="mobile-book-button"
-    >
-        Book a Session
-    </a>
+    background: var(--accent);
 
-</div>
+    color: #000;
 
+    border: none;
+}
 
 
-<!-- =========================================
-     PERFORMANCE HERO
-========================================= -->
+/* =========================================
+   BUTTONS
+========================================= */
 
-<main>
+.primary-button,
+.secondary-button {
+    display: inline-flex;
 
-<section class="performance-hero">
+    align-items: center;
+    justify-content: center;
 
-    <div class="performance-hero-content">
+    padding: 15px 25px;
 
-        <p class="eyebrow">
-            PERFORMANCE INTELLIGENCE
-        </p>
+    font-size: 0.75rem;
+    font-weight: 800;
 
+    text-transform: uppercase;
 
-        <h1>
+    letter-spacing: 0.05em;
 
-            UNDERSTAND
+    transition: 0.25s;
+}
 
-            <span>
-                YOUR GAME.
-            </span>
+.primary-button {
+    background: var(--accent);
+    color: #000;
+}
 
-        </h1>
+.primary-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(182,255,0,0.15);
+}
 
+.secondary-button {
+    border: 1px solid rgba(255,255,255,0.25);
+}
 
-        <p>
+.secondary-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
 
-            Turn performances into information.
-            EliteEdge Performance uses structured
-            analysis to identify what you're doing well,
-            where you can improve and what to work on next.
 
-        </p>
+/* =========================================
+   HOMEPAGE HERO
+========================================= */
 
+.hero {
+    min-height: 100vh;
 
-        <div class="performance-hero-buttons">
+    display: flex;
+    align-items: center;
 
-            <a
-                href="booking.html"
-                class="primary-button"
-            >
-                Book Performance Analysis
-            </a>
+    position: relative;
+    overflow: hidden;
 
-            <a
-                href="#process"
-                class="secondary-button"
-            >
-                Explore The Process
-            </a>
+    padding-top: 150px;
 
-        </div>
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(182,255,0,0.08),
+            transparent 32%
+        );
+}
 
-    </div>
+.hero::before,
+.academy-hero::before,
+.program-page-hero::before,
+.performance-hero::before {
+    content: "";
 
+    position: absolute;
+    inset: 0;
 
-    <div class="performance-hero-number">
-        04
-    </div>
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
 
-</section>
+    background-size: 70px 70px;
 
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
 
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
 
-<!-- =========================================
-     PERFORMANCE INTRO
-========================================= -->
+    pointer-events: none;
+}
 
-<section class="performance-intro">
+.hero-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+}
 
-    <div class="section-label">
+.hero h1 {
+    font-size: clamp(4rem,9vw,8rem);
+    line-height: 0.88;
+    letter-spacing: -0.06em;
+    font-weight: 900;
+    margin-bottom: 35px;
+}
 
-        <span>
-            01
-        </span>
+.hero h1 span {
+    color: var(--accent);
+}
 
-        PERFORMANCE MATTERS
+.hero-text {
+    max-width: 620px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 35px;
+}
 
-    </div>
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
+.hero-badge {
+    position: absolute;
 
-    <div class="performance-intro-grid">
+    right: 8%;
+    bottom: 15%;
 
-        <div>
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-            <p class="eyebrow">
-                SEE THE DETAILS
-            </p>
+    color: rgba(255,255,255,0.3);
+}
 
+.hero-badge strong {
+    color: var(--accent);
+    font-size: 3rem;
+}
 
-            <h2>
+.hero-badge span {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
 
-                DON'T JUST
 
-                <span>
-                    PLAY.
-                </span>
+/* =========================================
+   HOMEPAGE INTRO
+========================================= */
 
-                <br>
+.intro {
+    background: #0d0d0d;
+}
 
-                UNDERSTAND.
+.intro-content {
+    max-width: 900px;
+}
 
-            </h2>
+.intro-content h2 {
+    font-size: clamp(3rem,6vw,6rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    margin-bottom: 30px;
+}
 
-        </div>
+.intro-content h2 span {
+    display: block;
+    color: var(--accent);
+}
 
+.intro-content > p:last-child {
+    max-width: 650px;
+    color: var(--muted);
+}
 
-        <div class="performance-intro-copy">
 
-            <p>
+/* =========================================
+   DEVELOPMENT CARDS
+========================================= */
 
-                Football moves quickly. Small decisions
-                can have a huge impact on what happens next.
+.development {
+    display: grid;
 
-            </p>
+    grid-template-columns: repeat(3,1fr);
 
+    gap: 15px;
 
-            <p>
+    background: var(--background);
+}
 
-                Performance analysis gives players a chance
-                to slow the game down, review key moments and
-                understand the decisions behind their actions.
+.development-card {
+    min-height: 300px;
 
-            </p>
+    padding: 40px;
 
+    background: var(--surface);
 
-            <p>
+    border: 1px solid var(--border);
 
-                The goal isn't to criticise the player.
+    transition: 0.3s;
+}
 
-                <strong>
-                    It's to create a clearer pathway for improvement.
-                </strong>
+.development-card:hover {
+    transform: translateY(-6px);
 
-            </p>
+    border-color: rgba(182,255,0,0.4);
 
-        </div>
+    background: var(--surface-light);
+}
 
-    </div>
+.card-number {
+    color: var(--accent);
 
-</section>
+    font-size: 0.7rem;
 
+    font-weight: 800;
 
+    letter-spacing: 0.1em;
 
-<!-- =========================================
-     PERFORMANCE METRICS
-========================================= -->
+    margin-bottom: 80px;
+}
 
-<section class="performance-metrics">
+.development-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
 
-    <div class="section-label">
+.development-card p {
+    color: var(--muted);
+}
 
-        <span>
-            02
-        </span>
 
-        WHAT WE ANALYSE
+/* =========================================
+   HOMEPAGE PROGRAMS
+========================================= */
 
-    </div>
+.programs {
+    background: #0d0d0d;
+}
 
+.section-heading {
+    max-width: 800px;
+    margin-bottom: 65px;
+}
 
-    <div class="performance-metric-grid">
+.section-heading h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
+    line-height: 0.9;
 
-        <article class="performance-metric-card">
+    letter-spacing: -0.05em;
 
-            <span class="metric-number">
-                01
-            </span>
+    margin-bottom: 25px;
+}
 
+.section-heading h2 span {
+    color: var(--accent);
+}
 
-            <div>
+.section-heading p:last-child {
+    color: var(--muted);
+}
 
-                <p class="eyebrow">
-                    TECHNICAL
-                </p>
+.program-grid {
+    display: grid;
 
+    grid-template-columns: repeat(2,1fr);
 
-                <h3>
-                    Technical Execution
-                </h3>
+    gap: 15px;
+}
 
+.program-card {
+    min-height: 300px;
 
-                <p>
+    padding: 40px;
 
-                    First touch, passing, ball control,
-                    receiving and execution under pressure.
+    background: var(--surface);
 
-                </p>
+    border: 1px solid var(--border);
 
-            </div>
+    transition: 0.3s;
 
-        </article>
+    position: relative;
+    overflow: hidden;
+}
 
+.program-card::before {
+    content: "";
 
+    position: absolute;
 
-        <article class="performance-metric-card">
+    top: 0;
+    left: 0;
 
-            <span class="metric-number">
-                02
-            </span>
+    width: 0;
+    height: 2px;
 
+    background: var(--accent);
 
-            <div>
+    transition: 0.35s;
+}
 
-                <p class="eyebrow">
-                    TACTICAL
-                </p>
+.program-card:hover::before {
+    width: 100%;
+}
 
+.program-card:hover {
+    transform: translateY(-6px);
 
-                <h3>
-                    Tactical Decisions
-                </h3>
+    border-color: rgba(182,255,0,0.4);
+}
 
+.program-number {
+    color: var(--accent);
 
-                <p>
+    font-size: 0.7rem;
 
-                    Positioning, movement, scanning,
-                    awareness and decision-making.
+    font-weight: 800;
 
-                </p>
+    letter-spacing: 0.1em;
 
-            </div>
+    margin-bottom: 60px;
+}
 
-        </article>
+.program-card h3 {
+    font-size: 1.5rem;
 
+    margin-bottom: 15px;
+}
 
+.program-card p {
+    color: var(--muted);
 
-        <article class="performance-metric-card">
+    margin-bottom: 25px;
+}
 
-            <span class="metric-number">
-                03
-            </span>
+.program-card a {
+    color: var(--accent);
 
+    font-size: 0.75rem;
 
-            <div>
+    font-weight: 800;
 
-                <p class="eyebrow">
-                    PHYSICAL
-                </p>
+    text-transform: uppercase;
+}
 
 
-                <h3>
-                    Physical Performance
-                </h3>
+/* =========================================
+   ASSESSMENT
+========================================= */
 
+.assessment {
+    background:
+        radial-gradient(
+            circle at 70% 50%,
+            rgba(182,255,0,0.08),
+            transparent 35%
+        );
+}
 
-                <p>
+.assessment-content {
+    max-width: 750px;
+}
 
-                    Movement, intensity, work rate and
-                    physical actions throughout the game.
+.assessment h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
-                </p>
+    line-height: 0.9;
 
-            </div>
+    letter-spacing: -0.05em;
 
-        </article>
+    margin-bottom: 30px;
+}
 
+.assessment h2 span {
+    color: var(--accent);
+    display: block;
+}
 
+.assessment-content > p:not(.eyebrow) {
+    color: var(--muted);
 
-        <article class="performance-metric-card">
+    max-width: 600px;
 
-            <span class="metric-number">
-                04
-            </span>
+    margin-bottom: 35px;
+}
 
 
-            <div>
+/* =========================================
+   WHY
+========================================= */
 
-                <p class="eyebrow">
-                    MENTAL
-                </p>
+.why {
+    background: #0d0d0d;
+}
 
+.why-grid {
+    display: grid;
 
-                <h3>
-                    Game Intelligence
-                </h3>
+    grid-template-columns: 1fr 1fr;
 
+    gap: 100px;
+}
 
-                <p>
+.why-grid h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
-                    Composure, reactions, confidence and
-                    responses to different match situations.
+    line-height: 0.9;
 
-                </p>
+    letter-spacing: -0.05em;
+}
 
-            </div>
+.why-grid h2 span {
+    color: var(--accent);
+    display: block;
+}
 
-        </article>
+.why-text {
+    max-width: 550px;
+}
 
-    </div>
+.why-text p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
 
-</section>
 
+/* =========================================
+   TESTIMONIALS
+========================================= */
 
+.testimonials {
+    background: var(--background);
+}
 
-<!-- =========================================
-     PROCESS
-========================================= -->
+.testimonial-grid {
+    display: grid;
 
-<section
-    class="performance-process"
-    id="process"
->
+    grid-template-columns: repeat(2,1fr);
 
-    <div class="section-label">
+    gap: 15px;
+}
 
-        <span>
-            03
-        </span>
+.testimonial {
+    padding: 45px;
 
-        THE PROCESS
+    background: var(--surface);
 
-    </div>
+    border: 1px solid var(--border);
 
+    transition: 0.3s;
+}
 
-    <div class="performance-process-grid">
+.testimonial:hover {
+    transform: translateY(-5px);
 
-        <div>
+    border-color: rgba(182,255,0,0.3);
+}
 
-            <p class="eyebrow">
-                FROM GAME TO PLAN
-            </p>
+.testimonial p {
+    font-size: 1.1rem;
 
+    color: #ddd;
 
-            <h2>
+    margin-bottom: 30px;
+}
 
-                ANALYSE.
+.testimonial strong {
+    display: block;
 
-                <span>
-                    UNDERSTAND.
-                </span>
+    font-size: 0.8rem;
+}
 
-                IMPROVE.
+.testimonial span {
+    color: var(--accent);
 
-            </h2>
+    font-size: 0.65rem;
 
-        </div>
+    font-weight: 800;
 
+    letter-spacing: 0.1em;
+}
 
-        <div class="performance-steps">
 
+/* =========================================
+   BOOKING CTA
+========================================= */
 
-            <div class="performance-step">
+.booking-cta {
+    text-align: center;
 
-                <span>
-                    01
-                </span>
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(182,255,0,0.08),
+            transparent 35%
+        );
+}
 
-                <div>
+.booking-cta h2 {
+    font-size: clamp(3rem,7vw,7rem);
 
-                    <h3>
-                        Review
-                    </h3>
+    line-height: 0.9;
 
-                    <p>
+    letter-spacing: -0.05em;
 
-                        Key moments from the player's
-                        performance are identified and reviewed.
+    margin-bottom: 30px;
+}
 
-                    </p>
+.booking-cta h2 span {
+    color: var(--accent);
+    display: block;
+}
 
-                </div>
+.booking-cta > p:not(.eyebrow) {
+    max-width: 550px;
 
-            </div>
+    margin: 0 auto 35px;
 
+    color: var(--muted);
+}
 
 
-            <div class="performance-step">
+/* =========================================
+   CONTACT
+========================================= */
 
-                <span>
-                    02
-                </span>
+.contact {
+    display: grid;
 
-                <div>
+    grid-template-columns: 1fr 1fr;
 
-                    <h3>
-                        Analyse
-                    </h3>
+    gap: 100px;
 
-                    <p>
+    background: #0d0d0d;
+}
 
-                        Technical, tactical and decision-making
-                        patterns are examined.
+.contact h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
-                    </p>
+    line-height: 0.9;
 
-                </div>
+    letter-spacing: -0.05em;
+}
 
-            </div>
+.contact h2 span {
+    display: block;
 
+    color: var(--accent);
+}
 
+.contact-details {
+    max-width: 500px;
+}
 
-            <div class="performance-step">
+.contact-details p {
+    color: var(--muted);
 
-                <span>
-                    03
-                </span>
+    margin-bottom: 25px;
+}
 
-                <div>
+.contact-details a {
+    display: block;
 
-                    <h3>
-                        Identify
-                    </h3>
+    color: #ddd;
 
-                    <p>
+    margin-bottom: 12px;
 
-                        Strengths and priority development
-                        areas are clearly identified.
+    transition: 0.25s;
+}
 
-                    </p>
+.contact-details a:hover {
+    color: var(--accent);
+}
 
-                </div>
 
-            </div>
+/* =========================================
+   ACADEMY HERO
+========================================= */
 
+.academy-hero {
+    min-height: 85vh;
 
+    display: flex;
+    align-items: center;
 
-            <div class="performance-step">
+    position: relative;
 
-                <span>
-                    04
-                </span>
+    overflow: hidden;
 
-                <div>
+    padding-top: 150px;
 
-                    <h3>
-                        Develop
-                    </h3>
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(182,255,0,0.08),
+            transparent 32%
+        );
+}
 
-                    <p>
+.academy-hero-content {
+    max-width: 850px;
 
-                        The analysis becomes a practical
-                        development plan for future sessions.
+    position: relative;
 
-                    </p>
+    z-index: 2;
+}
 
-                </div>
+.academy-hero h1 {
+    font-size: clamp(4rem,9vw,8rem);
 
-            </div>
+    line-height: 0.88;
 
-        </div>
+    letter-spacing: -0.06em;
 
-    </div>
+    font-weight: 900;
 
-</section>
+    margin-bottom: 35px;
+}
 
+.academy-hero h1 span {
+    color: var(--accent);
 
+    display: block;
+}
 
-<!-- =========================================
-     MATCH ANALYSIS
-========================================= -->
+.academy-hero p:not(.eyebrow) {
+    max-width: 600px;
 
-<section class="match-analysis">
+    color: var(--muted);
 
-    <div class="section-label">
+    font-size: 1.05rem;
+}
 
-        <span>
-            04
-        </span>
+.academy-hero-number {
+    position: absolute;
 
-        MATCH ANALYSIS
+    right: 8%;
+    bottom: 15%;
 
-    </div>
+    font-size: clamp(8rem,18vw,18rem);
 
+    font-weight: 900;
 
-    <div class="match-analysis-grid">
+    line-height: 1;
 
+    color: rgba(255,255,255,0.025);
 
-        <div class="analysis-panel">
+    user-select: none;
+}
 
-            <div class="analysis-panel-top">
 
-                <span>
-                    MATCH REVIEW
-                </span>
+/* =========================================
+   ACADEMY PHILOSOPHY
+========================================= */
 
-                <strong>
-                    90'
-                </strong>
+.academy-philosophy {
+    background: #0d0d0d;
+}
 
-            </div>
+.academy-philosophy-grid {
+    display: grid;
 
+    grid-template-columns: 1fr 1fr;
 
-            <div class="analysis-pitch">
+    gap: 90px;
+}
 
-                <div class="pitch-line pitch-line-one"></div>
+.academy-philosophy h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
-                <div class="pitch-line pitch-line-two"></div>
+    line-height: 0.9;
 
-                <div class="pitch-circle"></div>
+    letter-spacing: -0.05em;
+}
 
+.academy-philosophy h2 span {
+    color: var(--accent);
+}
 
-                <div class="pitch-player player-one">
-                    01
-                </div>
+.academy-copy {
+    max-width: 550px;
+}
 
-                <div class="pitch-player player-two">
-                    02
-                </div>
+.academy-copy p {
+    color: var(--muted);
 
-                <div class="pitch-player player-three">
-                    03
-                </div>
+    margin-bottom: 25px;
 
-            </div>
+    font-size: 1rem;
+}
 
 
-            <div class="analysis-panel-bottom">
+/* =========================================
+   ACADEMY METHOD
+========================================= */
 
-                <span>
-                    POSITION
-                </span>
+.academy-method {
+    background: var(--background);
+}
 
-                <strong>
-                    PLAYER REVIEW
-                </strong>
+.method-grid {
+    display: grid;
 
-            </div>
+    grid-template-columns: repeat(2,1fr);
 
-        </div>
+    gap: 15px;
+}
 
+.method-card {
+    min-height: 280px;
 
+    padding: 40px;
 
-        <div class="analysis-copy">
+    background: var(--surface);
 
-            <p class="eyebrow">
-                SEE THE GAME DIFFERENTLY
-            </p>
+    border: 1px solid var(--border);
 
+    transition: 0.3s;
+}
 
-            <h2>
+.method-card:hover {
+    transform: translateY(-5px);
 
-                TURN
+    border-color: rgba(182,255,0,0.4);
+}
 
-                <span>
-                    MOMENTS
-                </span>
+.method-number {
+    color: var(--accent);
 
-                INTO
+    font-size: 2rem;
 
-                <br>
+    font-weight: 900;
 
-                PROGRESS.
+    margin-bottom: 65px;
+}
 
-            </h2>
+.method-card h3 {
+    font-size: 1.6rem;
 
+    margin-bottom: 12px;
+}
 
-            <p>
+.method-card p {
+    max-width: 450px;
 
-                A match contains hundreds of decisions.
-                Performance analysis helps players recognise
-                the moments that matter.
+    color: var(--muted);
+}
 
-            </p>
 
+/* =========================================
+   PLAYER PATHWAY
+========================================= */
 
-            <p>
+.player-pathway {
+    background: #0d0d0d;
+}
 
-                From receiving under pressure to choosing
-                when to pass, carry or move, every action can
-                become a learning opportunity.
+.pathway-content {
+    display: grid;
 
-            </p>
+    grid-template-columns: 1fr 1fr;
 
-        </div>
+    gap: 100px;
+}
 
-    </div>
+.pathway-content h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
-</section>
+    line-height: 0.9;
 
+    letter-spacing: -0.05em;
+}
 
+.pathway-content h2 span {
+    color: var(--accent);
+}
 
-<!-- =========================================
-     DEVELOPMENT REPORT
-========================================= -->
+.pathway-steps {
+    border-top: 1px solid var(--border);
+}
 
-<section class="performance-report">
+.pathway-step {
+    display: grid;
 
-    <div class="section-label">
+    grid-template-columns: 60px 1fr;
 
-        <span>
-            05
-        </span>
+    gap: 25px;
 
-        DEVELOPMENT REPORT
+    padding: 30px 0;
 
-    </div>
+    border-bottom: 1px solid var(--border);
+}
 
+.pathway-step > span {
+    color: var(--accent);
 
-    <div class="performance-report-grid">
+    font-size: 0.8rem;
 
-        <div>
+    font-weight: 800;
+}
 
-            <p class="eyebrow">
-                CLEAR FEEDBACK
-            </p>
+.pathway-step h3 {
+    font-size: 1.2rem;
 
+    margin-bottom: 8px;
+}
 
-            <h2>
+.pathway-step p {
+    color: var(--muted);
 
-                KNOW
+    font-size: 0.9rem;
+}
 
-                <span>
-                    WHAT'S NEXT.
-                </span>
 
-            </h2>
+/* =========================================
+   COACHING
+========================================= */
 
-        </div>
+.coaching {
+    background: var(--background);
+}
 
+.coaching-grid {
+    display: grid;
 
-        <div class="report-card">
+    grid-template-columns: 1fr 1fr;
 
-            <div class="report-header">
+    gap: 100px;
+}
 
-                <span>
-                    PLAYER DEVELOPMENT
-                </span>
+.coaching-main h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
-                <span>
-                    2026
-                </span>
+    line-height: 0.9;
 
-            </div>
+    letter-spacing: -0.05em;
+}
 
+.coaching-main h2 span {
+    color: var(--accent);
+}
 
-            <div class="report-row">
+.coaching-copy {
+    max-width: 550px;
+}
 
-                <span>
-                    Technical
-                </span>
+.coaching-copy p {
+    color: var(--muted);
 
-                <div class="report-bar">
+    margin-bottom: 25px;
+}
 
-                    <span style="width: 78%;"></span>
 
-                </div>
+/* =========================================
+   ACADEMY CTA
+========================================= */
 
-                <strong>
-                    78
-                </strong>
+.academy-cta {
+    text-align: center;
 
-            </div>
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(182,255,0,0.08),
+            transparent 35%
+        );
+}
 
+.academy-cta h2 {
+    font-size: clamp(3rem,7vw,7rem);
 
-            <div class="report-row">
+    line-height: 0.9;
 
-                <span>
-                    Tactical
-                </span>
+    letter-spacing: -0.05em;
 
-                <div class="report-bar">
+    margin-bottom: 30px;
+}
 
-                    <span style="width: 84%;"></span>
+.academy-cta h2 span {
+    color: var(--accent);
+}
 
-                </div>
+.academy-cta > p:not(.eyebrow) {
+    max-width: 550px;
 
-                <strong>
-                    84
-                </strong>
+    margin: 0 auto 35px;
 
-            </div>
+    color: var(--muted);
+}
 
 
-            <div class="report-row">
+/* =========================================
+   PROGRAM PAGE HERO
+========================================= */
 
-                <span>
-                    Decision Making
-                </span>
+.program-page-hero {
+    min-height: 85vh;
 
-                <div class="report-bar">
+    display: flex;
+    align-items: center;
 
-                    <span style="width: 71%;"></span>
+    position: relative;
 
-                </div>
+    overflow: hidden;
 
-                <strong>
-                    71
-                </strong>
+    padding-top: 150px;
 
-            </div>
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(182,255,0,0.09),
+            transparent 32%
+        );
+}
 
+.program-page-content {
+    max-width: 850px;
 
-            <div class="report-row">
+    position: relative;
 
-                <span>
-                    Consistency
-                </span>
+    z-index: 2;
+}
 
-                <div class="report-bar">
+.program-page-content h1 {
+    font-size: clamp(4rem,9vw,8rem);
 
-                    <span style="width: 67%;"></span>
+    line-height: 0.88;
 
-                </div>
+    letter-spacing: -0.06em;
 
-                <strong>
-                    67
-                </strong>
+    font-weight: 900;
 
-            </div>
+    margin-bottom: 35px;
+}
 
+.program-page-content h1 span {
+    display: block;
 
-            <div class="report-footer">
+    color: var(--accent);
+}
 
-                <span>
-                    PRIORITY AREA
-                </span>
+.program-page-content > p:not(.eyebrow) {
+    max-width: 600px;
 
-                <strong>
-                    DECISION MAKING
-                </strong>
+    color: var(--muted);
 
-            </div>
+    font-size: 1.05rem;
+}
 
-        </div>
+.program-hero-number {
+    position: absolute;
 
-    </div>
+    right: 8%;
+    bottom: 15%;
 
-</section>
+    font-size: clamp(8rem,18vw,18rem);
 
+    font-weight: 900;
 
+    line-height: 1;
 
-<!-- =========================================
-     CTA
-========================================= -->
+    color: rgba(255,255,255,0.025);
 
-<section class="performance-cta">
+    user-select: none;
+}
 
-    <p class="eyebrow">
-        READY TO UNDERSTAND YOUR GAME?
-    </p>
 
+/* =========================================
+   PROGRAM INTRO
+========================================= */
 
-    <h2>
+.program-intro {
+    background: #0d0d0d;
+}
 
-        SEE THE GAME.
+.program-intro-grid {
+    display: grid;
 
-        <span>
-            SEE YOUR POTENTIAL.
-        </span>
+    grid-template-columns: 1fr 1fr;
 
-    </h2>
+    gap: 90px;
+}
 
+.program-intro-grid h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
-    <p>
+    line-height: 0.9;
 
-        Take the next step with a structured
-        performance analysis designed around your game.
+    letter-spacing: -0.05em;
+}
 
-    </p>
+.program-intro-grid h2 span {
+    color: var(--accent);
 
+    display: block;
+}
 
-    <a
-        href="booking.html"
-        class="primary-button"
-    >
-        Book Performance Analysis
-    </a>
+.program-intro-copy {
+    max-width: 550px;
+}
 
-</section>
+.program-intro-copy p {
+    color: var(--muted);
 
-</main>
+    margin-bottom: 25px;
 
+    font-size: 1rem;
+}
 
 
-<!-- =========================================
-     FOOTER
-========================================= -->
+/* =========================================
+   PREMIUM PROGRAMS
+========================================= */
 
-<footer>
+.program-list {
+    background: var(--background);
+}
 
-    <div class="footer-logo">
+.premium-program {
+    display: grid;
 
-        ELITE<span>
-            EDGE
-        </span>
+    grid-template-columns: 160px 1fr;
 
-    </div>
+    gap: 60px;
 
+    padding: 80px 0;
 
-    <p>
+    border-top: 1px solid var(--border);
 
-        © 2026 EliteEdge Football Academy.
-        Fictional demonstration project.
+    position: relative;
 
-    </p>
+    transition: 0.3s ease;
+}
 
+.premium-program:last-child {
+    border-bottom: 1px solid var(--border);
+}
 
-    <div class="footer-links">
+.premium-program:hover {
+    padding-left: 15px;
+}
 
-        <a href="index.html">
-            Home
-        </a>
+.program-index {
+    font-size: 5rem;
 
-        <a href="programs.html">
-            Programs
-        </a>
+    line-height: 1;
 
-        <a href="academy.html">
-            Academy
-        </a>
+    font-weight: 900;
 
-        <a href="performance.html">
-            Performance
-        </a>
+    color: rgba(255,255,255,0.08);
 
-        <a href="index.html#contact">
-            Contact
-        </a>
+    transition: 0.3s;
+}
 
-    </div>
+.premium-program:hover .program-index {
+    color: var(--accent);
+}
 
-</footer>
+.premium-program-content {
+    max-width: 800px;
+}
 
+.premium-program-content h2 {
+    font-size: clamp(3rem,6vw,6rem);
 
+    line-height: 0.9;
 
-<script src="script.js"></script>
+    letter-spacing: -0.05em;
 
-</body>
+    margin-bottom: 30px;
+}
 
-</html>
+.premium-program-content h2 span {
+    display: block;
+
+    color: var(--accent);
+}
+
+.premium-program-content > p:not(.eyebrow) {
+    max-width: 650px;
+
+    color: var(--muted);
+
+    font-size: 1rem;
+
+    margin-bottom: 30px;
+}
+
+.premium-program-content ul {
+    list-style: none;
+
+    display: grid;
+
+    grid-template-columns: rep
