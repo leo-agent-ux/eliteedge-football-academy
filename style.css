@@ -1362,5 +1362,414 @@ section {
     font-size: 0.85rem;
 
     padding-left: 20px;
+/* =========================================
+   PERFORMANCE PAGE
+========================================= */
 
+.performance-hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 150px;
+
+    background:
+        radial-gradient(
+            circle at 75% 45%,
+            rgba(182,255,0,0.09),
+            transparent 32%
+        );
+}
+
+.performance-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+}
+
+.performance-hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
+}
+
+.performance-hero h1 {
+    font-size: clamp(4rem,9vw,8rem);
+    line-height: 0.88;
+    letter-spacing: -0.06em;
+    font-weight: 900;
+    margin-bottom: 35px;
+}
+
+.performance-hero h1 span {
+    display: block;
+    color: var(--accent);
+}
+
+.performance-hero-content > p:not(.eyebrow) {
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 35px;
+}
+
+.performance-hero-number {
+    position: absolute;
+    right: 8%;
+    bottom: 15%;
+
+    font-size: clamp(8rem,18vw,18rem);
+    font-weight: 900;
+    line-height: 1;
+
+    color: rgba(255,255,255,0.025);
+    user-select: none;
+}
+
+
+/* =========================================
+   PERFORMANCE INTRO
+========================================= */
+
+.performance-intro {
+    background: #0d0d0d;
+}
+
+.performance-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+}
+
+.performance-intro-grid h2 {
+    font-size: clamp(3rem,6vw,6rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+
+.performance-intro-grid h2 span {
+    display: block;
+    color: var(--accent);
+}
+
+.performance-intro-copy {
+    max-width: 550px;
+}
+
+.performance-intro-copy p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   PERFORMANCE ANALYSIS
+========================================= */
+
+.performance-analysis {
+    background: var(--background);
+}
+
+.performance-analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+}
+
+.performance-card {
+    min-height: 280px;
+    padding: 40px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+
+    transition: 0.3s;
+}
+
+.performance-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(182,255,0,0.4);
+}
+
+.performance-card-number {
+    color: var(--accent);
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 65px;
+}
+
+.performance-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.performance-card p {
+    color: var(--muted);
+    max-width: 500px;
+}
+
+
+/* =========================================
+   PERFORMANCE ASSESSMENT
+========================================= */
+
+.performance-assessment {
+    background:
+        radial-gradient(
+            circle at 70% 50%,
+            rgba(182,255,0,0.08),
+            transparent 35%
+        );
+}
+
+.performance-assessment-content {
+    max-width: 800px;
+}
+
+.performance-assessment h2 {
+    font-size: clamp(3rem,6vw,6rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    margin-bottom: 30px;
+}
+
+.performance-assessment h2 span {
+    display: block;
+    color: var(--accent);
+}
+
+.performance-assessment-content > p:not(.eyebrow) {
+    max-width: 650px;
+    color: var(--muted);
+    margin-bottom: 35px;
+}
+
+.assessment-points {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px 30px;
+    margin-bottom: 35px;
+}
+
+.assessment-points div {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+    color: #ddd;
+    font-size: 0.85rem;
+}
+
+.assessment-points span {
+    color: var(--accent);
+    font-weight: 800;
+    margin-right: 15px;
+}
+
+
+/* =========================================
+   PERFORMANCE REPORT
+========================================= */
+
+.performance-report {
+    background: #0d0d0d;
+}
+
+.performance-report-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.performance-report-grid h2 {
+    font-size: clamp(3rem,6vw,6rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+}
+
+.performance-report-grid h2 span {
+    display: block;
+    color: var(--accent);
+}
+
+.performance-report-copy {
+    max-width: 550px;
+}
+
+.performance-report-copy p {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.performance-report-copy ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.performance-report-copy li {
+    padding: 15px 0 15px 22px;
+    border-bottom: 1px solid var(--border);
+    color: #ddd;
+    position: relative;
+}
+
+.performance-report-copy li::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    position: absolute;
+    left: 0;
+    top: 25px;
+
+    background: var(--accent);
+}
+
+
+/* =========================================
+   PERFORMANCE PROCESS
+========================================= */
+
+.performance-process {
+    background: var(--background);
+}
+
+.performance-process-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+
+.performance-process-grid article {
+    min-height: 240px;
+    padding: 35px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+
+    transition: 0.3s;
+}
+
+.performance-process-grid article:hover {
+    transform: translateY(-5px);
+    border-color: rgba(182,255,0,0.4);
+}
+
+.performance-process-grid article > span {
+    color: var(--accent);
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.performance-process-grid h3 {
+    font-size: 1.4rem;
+    margin: 55px 0 10px;
+}
+
+.performance-process-grid p {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+
+/* =========================================
+   PERFORMANCE CTA
+========================================= */
+
+.performance-cta {
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(182,255,0,0.08),
+            transparent 35%
+        );
+}
+
+.performance-cta h2 {
+    font-size: clamp(3rem,7vw,7rem);
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    margin-bottom: 30px;
+}
+
+.performance-cta h2 span {
+    display: block;
+    color: var(--accent);
+}
+
+.performance-cta > p:not(.eyebrow) {
+    max-width: 550px;
+    margin: 0 auto 35px;
+    color: var(--muted);
+}
+
+
+/* =========================================
+   PERFORMANCE RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .performance-intro-grid,
+    .performance-report-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .performance-process-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .performance-hero {
+        min-height: 85vh;
+    }
+
+    .performance-hero h1 {
+        font-size: clamp(3.3rem,15vw,6rem);
+    }
+
+    .performance-hero-number {
+        display: none;
+    }
+
+    .performance-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .assessment-points {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-process-grid {
+        grid-template-columns: 1fr;
+    }
+
+            }
     
