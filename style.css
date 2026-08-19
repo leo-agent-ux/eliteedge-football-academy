@@ -1434,24 +1434,135 @@ section {
 }
 
 
-/* =========================================
+=========================================
    PREMIUM PROGRAMS
-============
-/* =========================================
-   PERFORMANCE PAGE
 ========================================= */
 
-/* PERFORMANCE HERO */
+.premium-programs {
+    background: var(--background);
+}
+
+.premium-programs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.premium-program-card {
+    position: relative;
+    min-height: 360px;
+    padding: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.premium-program-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--accent);
+    transition: width 0.35s ease;
+}
+
+.premium-program-card:hover::before {
+    width: 100%;
+}
+
+.premium-program-card:hover {
+    transform: translateY(-7px);
+    background: var(--surface-light);
+    border-color: rgba(182,255,0,0.4);
+}
+
+.premium-program-number {
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    margin-bottom: 70px;
+}
+
+.premium-program-card h3 {
+    font-size: 1.6rem;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.premium-program-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+.premium-program-card a {
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   PROGRAM FEATURES
+========================================= */
+
+.program-features {
+    background: #0d0d0d;
+}
+
+.program-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.program-feature {
+    padding: 35px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: 0.3s ease;
+}
+
+.program-feature:hover {
+    transform: translateY(-5px);
+    border-color: rgba(182,255,0,0.35);
+}
+
+.program-feature span {
+    display: block;
+    color: var(--accent);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    margin-bottom: 25px;
+}
+
+.program-feature h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.program-feature p {
+    color: var(--muted);
+}
+
+
+/* =========================================
+   PERFORMANCE HERO
+========================================= */
 
 .performance-hero {
     min-height: 85vh;
-
     display: flex;
     align-items: center;
-
     position: relative;
     overflow: hidden;
-
     padding-top: 150px;
 
     background:
@@ -1464,20 +1575,15 @@ section {
 
 .performance-hero-content {
     max-width: 850px;
-
     position: relative;
     z-index: 2;
 }
 
 .performance-hero h1 {
-    font-size: clamp(4rem, 9vw, 8rem);
-
+    font-size: clamp(4rem,9vw,8rem);
     line-height: 0.88;
-
     letter-spacing: -0.06em;
-
     font-weight: 900;
-
     margin-bottom: 35px;
 }
 
@@ -1487,37 +1593,19 @@ section {
 }
 
 .performance-hero p:not(.eyebrow) {
-    max-width: 620px;
-
+    max-width: 600px;
     color: var(--muted);
-
     font-size: 1.05rem;
-
-    margin-bottom: 35px;
 }
 
-.performance-hero-buttons {
-    display: flex;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-}
-
-.performance-hero-number {
+.performance-number {
     position: absolute;
-
     right: 8%;
     bottom: 15%;
-
-    font-size: clamp(8rem, 18vw, 18rem);
-
+    font-size: clamp(8rem,18vw,18rem);
     font-weight: 900;
-
     line-height: 1;
-
     color: rgba(255,255,255,0.025);
-
     user-select: none;
 }
 
@@ -1532,40 +1620,28 @@ section {
 
 .performance-intro-grid {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 90px;
 }
 
-.performance-intro-grid h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
-
+.performance-intro h2 {
+    font-size: clamp(3rem,6vw,6rem);
     line-height: 0.9;
-
     letter-spacing: -0.05em;
 }
 
-.performance-intro-grid h2 span {
-    color: var(--accent);
-
+.performance-intro h2 span {
     display: block;
+    color: var(--accent);
 }
 
-.performance-intro-copy {
+.performance-copy {
     max-width: 550px;
 }
 
-.performance-intro-copy p {
+.performance-copy p {
     color: var(--muted);
-
     margin-bottom: 25px;
-
-    font-size: 1rem;
-}
-
-.performance-intro-copy strong {
-    color: var(--text);
 }
 
 
@@ -1577,608 +1653,228 @@ section {
     background: var(--background);
 }
 
-.performance-metric-grid {
+.metrics-grid {
     display: grid;
-
-    grid-template-columns: repeat(2, 1fr);
-
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
 }
 
-.performance-metric-card {
-    min-height: 280px;
-
-    padding: 40px;
-
+.metric-card {
+    padding: 40px 30px;
     background: var(--surface);
-
     border: 1px solid var(--border);
-
-    display: grid;
-
-    grid-template-columns: 55px 1fr;
-
-    gap: 25px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    transition: 0.3s;
-}
-
-.performance-metric-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 0;
-    height: 2px;
-
-    background: var(--accent);
-
-    transition: 0.35s;
-}
-
-.performance-metric-card:hover::before {
-    width: 100%;
-}
-
-.performance-metric-card:hover {
-    transform: translateY(-6px);
-
-    border-color: rgba(182,255,0,0.4);
-
-    background: var(--surface-light);
-}
-
-.metric-number {
-    color: var(--accent);
-
-    font-size: 0.75rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.1em;
-}
-
-.performance-metric-card h3 {
-    font-size: 1.5rem;
-
-    margin-bottom: 12px;
-}
-
-.performance-metric-card p {
-    color: var(--muted);
-
-    max-width: 450px;
-}
-
-
-/* =========================================
-   PERFORMANCE PROCESS
-========================================= */
-
-.performance-process {
-    background: #0d0d0d;
-}
-
-.performance-process-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 100px;
-}
-
-.performance-process-grid h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.05em;
-}
-
-.performance-process-grid h2 span {
-    color: var(--accent);
-
-    display: block;
-}
-
-.performance-steps {
-    border-top: 1px solid var(--border);
-}
-
-.performance-step {
-    display: grid;
-
-    grid-template-columns: 60px 1fr;
-
-    gap: 25px;
-
-    padding: 30px 0;
-
-    border-bottom: 1px solid var(--border);
-
-    transition: 0.25s;
-}
-
-.performance-step > span {
-    color: var(--accent);
-
-    font-size: 0.8rem;
-
-    font-weight: 800;
-}
-
-.performance-step h3 {
-    font-size: 1.25rem;
-
-    margin-bottom: 8px;
-}
-
-.performance-step p {
-    color: var(--muted);
-
-    font-size: 0.9rem;
-
-    max-width: 450px;
-}
-
-.performance-step:hover h3 {
-    color: var(--accent);
-}
-
-
-/* =========================================
-   MATCH ANALYSIS
-========================================= */
-
-.match-analysis {
-    background: var(--background);
-}
-
-.match-analysis-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 100px;
-
-    align-items: center;
-}
-
-
-/* ANALYSIS PANEL */
-
-.analysis-panel {
-    background: var(--surface);
-
-    border: 1px solid var(--border);
-
-    overflow: hidden;
-
-    box-shadow: 0 25px 70px rgba(0,0,0,0.35);
-}
-
-.analysis-panel-top,
-.analysis-panel-bottom {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 18px 22px;
-
-    color: var(--muted);
-
-    font-size: 0.65rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.12em;
-}
-
-.analysis-panel-top {
-    border-bottom: 1px solid var(--border);
-}
-
-.analysis-panel-top strong {
-    color: var(--accent);
-
-    font-size: 0.8rem;
-}
-
-.analysis-panel-bottom {
-    border-top: 1px solid var(--border);
-}
-
-.analysis-panel-bottom strong {
-    color: #fff;
-}
-
-
-/* PITCH */
-
-.analysis-pitch {
-    position: relative;
-
-    min-height: 430px;
-
-    margin: 25px;
-
-    border: 1px solid rgba(255,255,255,0.2);
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent 49.8%,
-            rgba(255,255,255,0.2) 50%,
-            transparent 50.2%
-        ),
-        linear-gradient(
-            rgba(255,255,255,0.035),
-            rgba(255,255,255,0.035)
-        );
-
-    overflow: hidden;
-}
-
-.pitch-line {
-    position: absolute;
-
-    border: 1px solid rgba(255,255,255,0.18);
-}
-
-.pitch-line-one {
-    width: 38%;
-
-    height: 35%;
-
-    left: -1px;
-
-    top: 32.5%;
-}
-
-.pitch-line-two {
-    width: 38%;
-
-    height: 35%;
-
-    right: -1px;
-
-    top: 32.5%;
-}
-
-.pitch-circle {
-    position: absolute;
-
-    width: 110px;
-
-    height: 110px;
-
-    border: 1px solid rgba(255,255,255,0.2);
-
-    border-radius: 50%;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-}
-
-.pitch-player {
-    position: absolute;
-
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: var(--accent);
-
-    color: #000;
-
-    font-size: 0.65rem;
-
-    font-weight: 900;
-
-    box-shadow: 0 0 20px rgba(182,255,0,0.25);
-}
-
-.player-one {
-    left: 22%;
-    top: 42%;
-}
-
-.player-two {
-    left: 55%;
-    top: 25%;
-}
-
-.player-three {
-    right: 18%;
-    bottom: 30%;
-}
-
-
-/* ANALYSIS COPY */
-
-.analysis-copy {
-    max-width: 550px;
-}
-
-.analysis-copy h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.05em;
-
-    margin-bottom: 30px;
-}
-
-.analysis-copy h2 span {
-    color: var(--accent);
-}
-
-.analysis-copy > p:not(.eyebrow) {
-    color: var(--muted);
-
-    margin-bottom: 25px;
-
-    max-width: 520px;
-}
-
-
-/* =========================================
-   DEVELOPMENT REPORT
-========================================= */
-
-.performance-report {
-    background: #0d0d0d;
-}
-
-.performance-report-grid {
-    display: grid;
-
-    grid-template-columns: 0.85fr 1.15fr;
-
-    gap: 100px;
-
-    align-items: center;
-}
-
-.performance-report-grid h2 {
-    font-size: clamp(3rem, 6vw, 6rem);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.05em;
-}
-
-.performance-report-grid h2 span {
-    color: var(--accent);
-
-    display: block;
-}
-
-
-/* REPORT CARD */
-
-.report-card {
-    background: var(--surface);
-
-    border: 1px solid var(--border);
-
-    padding: 30px;
-
-    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
-}
-
-.report-header {
-    display: flex;
-
-    justify-content: space-between;
-
-    padding-bottom: 20px;
-
-    margin-bottom: 25px;
-
-    border-bottom: 1px solid var(--border);
-
-    color: var(--muted);
-
-    font-size: 0.65rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.12em;
-}
-
-.report-header span:last-child {
-    color: var(--accent);
-}
-
-
-/* REPORT ROW */
-
-.report-row {
-    display: grid;
-
-    grid-template-columns: 130px 1fr 35px;
-
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 25px;
-}
-
-.report-row > span {
-    color: #ddd;
-
-    font-size: 0.75rem;
-
-    font-weight: 600;
-}
-
-.report-row strong {
-    color: var(--accent);
-
-    font-size: 0.8rem;
-
-    text-align: right;
-}
-
-.report-bar {
-    height: 5px;
-
-    background: var(--surface-lighter);
-
-    overflow: hidden;
-}
-
-.report-bar span {
-    display: block;
-
-    height: 100%;
-
-    background: var(--accent);
-
-    transform-origin: left;
-
-    animation: reportBarIn 1s ease forwards;
-}
-
-@keyframes reportBarIn {
-    from {
-        transform: scaleX(0);
-    }
-
-    to {
-        transform: scaleX(1);
-    }
-}
-
-
-/* REPORT FOOTER */
-
-.report-footer {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-top: 30px;
-
-    padding-top: 20px;
-
-    border-top: 1px solid var(--border);
-
-    font-size: 0.65rem;
-
-    font-weight: 800;
-
-    letter-spacing: 0.12em;
-}
-
-.report-footer span {
-    color: var(--muted);
-}
-
-.report-footer strong {
-    color: var(--accent);
-}
-
-
-/* =========================================
-   PERFORMANCE CTA
-========================================= */
-
-.performance-cta {
     text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(182,255,0,0.09),
-            transparent 35%
-        );
+    transition: 0.3s ease;
 }
 
-.performance-cta h2 {
-    font-size: clamp(3rem, 7vw, 7rem);
-
-    line-height: 0.9;
-
-    letter-spacing: -0.05em;
-
-    margin-bottom: 30px;
+.metric-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(182,255,0,0.4);
 }
 
-.performance-cta h2 span {
+.metric-card strong {
     display: block;
-
     color: var(--accent);
+    font-size: clamp(2.5rem,5vw,4.5rem);
+    line-height: 1;
+    font-weight: 900;
+    margin-bottom: 15px;
 }
 
-.performance-cta > p:not(.eyebrow) {
-    max-width: 550px;
-
-    margin: 0 auto 35px;
-
+.metric-card span {
     color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 
 /* =========================================
-   PERFORMANCE RESPONSIVE
+   FOOTER
 ========================================= */
 
-@media (max-width: 900px) {
+.footer {
+    padding: 70px 7% 35px;
+    background: #050505;
+    border-top: 1px solid var(--border);
+}
 
-    .performance-intro-grid,
-    .performance-process-grid,
-    .match-analysis-grid,
-    .performance-report-grid {
-        grid-template-columns: 1fr;
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 50px;
+}
 
+.footer-brand {
+    max-width: 350px;
+}
+
+.footer-logo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.footer-logo span {
+    color: var(--accent);
+}
+
+.footer-brand p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.footer-column h4 {
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer-column a {
+    display: block;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    transition: 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+    color: #666;
+    font-size: 0.7rem;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    section {
+        padding: 90px 5%;
+    }
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .desktop-nav {
+        gap: 20px;
+    }
+
+    .development {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .premium-programs-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .why-grid,
+    .contact,
+    .academy-philosophy-grid,
+    .pathway-content,
+    .coaching-grid,
+    .program-intro-grid,
+    .performance-intro-grid {
         gap: 60px;
     }
+}
 
-    .performance-metric-grid {
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    section {
+        padding: 80px 6%;
+    }
+
+    .desktop-nav,
+    .nav-button {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+
+    .hero {
+        min-height: 90vh;
+        padding-top: 130px;
+    }
+
+    .hero h1,
+    .academy-hero h1,
+    .program-page-content h1,
+    .performance-hero h1 {
+        font-size: clamp(3.5rem,12vw,6rem);
+    }
+
+    .hero-badge {
+        display: none;
+    }
+
+    .development,
+    .program-grid,
+    .testimonial-grid,
+    .method-grid,
+    .premium-programs-grid,
+    .program-features-grid {
         grid-template-columns: 1fr;
     }
 
-    .performance-hero-number {
-        right: 3%;
+    .why-grid,
+    .contact,
+    .academy-philosophy-grid,
+    .pathway-content,
+    .coaching-grid,
+    .program-intro-grid,
+    .performance-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .academy-hero,
+    .program-page-hero,
+    .performance-hero {
+        min-height: 80vh;
+    }
+
+    .academy-hero-number,
+    .program-hero-number,
+    .performance-number {
+        right: 5%;
         bottom: 8%;
+        font-size: 8rem;
     }
 
-    .performance-process-grid h2,
-    .performance-intro-grid h2,
-    .analysis-copy h2,
-    .performance-report-grid h2 {
-        font-size: clamp(3rem, 11vw, 5rem);
-    }
-
-    .analysis-pitch {
-        min-height: 360px;
-    }
-
-    .report-row {
-        grid-template-columns: 120px 1fr 35px;
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
     }
 }
 
@@ -2187,99 +1883,157 @@ section {
    MOBILE
 ========================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
 
     section {
-        padding: 80px 6%;
+        padding: 70px 5%;
     }
 
+    .navbar {
+        height: 70px;
+        padding: 0 5%;
+    }
+
+    .mobile-menu {
+        top: 70px;
+        padding: 20px 5% 30px;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .hero,
+    .academy-hero,
+    .program-page-hero,
     .performance-hero {
-        min-height: 90vh;
-
-        padding-top: 130px;
+        padding-top: 110px;
+        min-height: 80vh;
     }
 
+    .hero h1,
+    .academy-hero h1,
+    .program-page-content h1,
     .performance-hero h1 {
-        font-size: clamp(3.5rem, 16vw, 5rem);
+        font-size: clamp(3rem,16vw,5rem);
+        letter-spacing: -0.055em;
     }
 
+    .hero-text,
+    .academy-hero p:not(.eyebrow),
+    .program-page-content > p:not(.eyebrow),
     .performance-hero p:not(.eyebrow) {
         font-size: 0.95rem;
     }
 
-    .performance-hero-buttons {
+    .hero-buttons {
         flex-direction: column;
-
         align-items: stretch;
     }
 
-    .performance-hero-buttons a {
+    .primary-button,
+    .secondary-button {
         width: 100%;
     }
 
-    .performance-metric-card {
-        grid-template-columns: 40px 1fr;
-
-        padding: 30px 25px;
-
-        min-height: 240px;
+    .development-card,
+    .program-card,
+    .method-card,
+    .premium-program-card,
+    .program-feature,
+    .testimonial {
+        padding: 30px;
     }
 
-    .performance-step {
-        grid-template-columns: 45px 1fr;
-
-        gap: 15px;
+    .card-number,
+    .program-number,
+    .method-number,
+    .premium-program-number {
+        margin-bottom: 45px;
     }
 
-    .analysis-pitch {
-        min-height: 300px;
-
-        margin: 15px;
+    .metrics-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .pitch-circle {
-        width: 80px;
-        height: 80px;
+    .metric-card {
+        padding: 30px 15px;
     }
 
-    .pitch-player {
-        width: 32px;
-        height: 32px;
+    .metric-card strong {
+        font-size: 2.5rem;
     }
 
-    .report-card {
-        padding: 22px 18px;
+    .footer {
+        padding: 55px 5% 25px;
     }
 
-    .report-row {
-        grid-template-columns: 1fr 50px;
-
-        gap: 8px;
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
     }
 
-    .report-row > span {
-        grid-column: 1;
-    }
-
-    .report-row .report-bar {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .report-row strong {
-        grid-column: 2;
-        grid-row: 1 / span 2;
-    }
-
-    .report-footer {
+    .footer-bottom {
         flex-direction: column;
-
         align-items: flex-start;
-
-        gap: 8px;
-    }
-
-    .performance-cta h2 {
-        font-size: clamp(3rem, 14vw, 5rem);
     }
 }
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    section {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .hero h1,
+    .academy-hero h1,
+    .program-page-content h1,
+    .performance-hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .development-card,
+    .program-card,
+    .method-card,
+    .premium-program-card,
+    .program-feature,
+    .testimonial {
+        padding: 25px;
+    }
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    }
